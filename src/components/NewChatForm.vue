@@ -5,13 +5,13 @@
       v-model="message"
       @keypress.enter.prevent="handleSubmit"
     ></textarea>
-    <div class="error">{{ error }}</div>
+    <div v-if="error" class="error">{{ error }} blah</div>
   </form>
 </template>
 
 <script>
-import getUser from "../composables/getUser";
 import useCollection from "../composables/useCollection";
+import getUser from "../composables/getUser";
 import { timestamp } from "../firebase/config";
 import { ref } from "vue";
 
@@ -54,5 +54,11 @@ textarea {
   border-radius: 20px;
   font-family: inherit;
   outline: none;
+}
+.error {
+  text-align: center;
+  color: #ff2a58;
+  font-size: 12px;
+  padding: 10px 0;
 }
 </style>
